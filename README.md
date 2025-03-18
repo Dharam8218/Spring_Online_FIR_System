@@ -14,7 +14,7 @@ The Online FIR System provides a platform for users to file complaints, track th
 2. Frontend: Thymeleaf, HTML, CSS, JavaScript, Bootstrap
 3. Database: Oracle 10g
 
-🚀 How to Run\
+🚀 How to Run
 1. Clone the repository.
 2. Configure application.properties for Oracle DB.
 3. Run the application using Spring Boot.
