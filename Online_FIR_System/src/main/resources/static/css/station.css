@@ -1,0 +1,103 @@
+::selection {
+  background-color: gray;
+}
+
+.container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: height 0.3s ease-in-out;
+
+}
+
+.form {
+  width: 400px;
+  height: 80vh;
+  background-image: linear-gradient(to bottom, #424242, #212121);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  margin: 10vh auto;
+}
+
+.title {
+  color: wheat;
+  margin: 2rem 0;
+  font-size: 2rem;
+}
+
+.invalid {
+     color: red;
+     margin-top: 2rem;
+     font-size: 1rem;
+}
+
+.success{
+    color: green;
+    margin-top: 2rem;
+    font-size: 1rem;
+}
+
+.input {
+  margin: 0.5rem 0;
+  padding: 1rem 0.5rem;
+  width: 20rem;
+  background-color: inherit;
+  color: wheat;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid wheat;
+  transition: all 400ms;
+}
+.input:hover {
+  background-color: #424242;
+  border: none;
+  border-radius: 0.5rem;
+}
+.btn {
+  height: 3rem;
+  width: 20rem;
+  margin-top: 3rem;
+  background-color: wheat;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1.2rem;
+  transition: all 400ms;
+  cursor: pointer;
+  box-shadow:
+    0 0 10px antiquewhite,
+    0 0 10px antiquewhite;
+}
+.btn:hover {
+  background-color: antiquewhite;
+  box-shadow: none;
+}
+
+body {
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1737100522891-e8946ac97fd1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(30, 60, 114, 0.7), rgba(42, 82, 152, 0.7));
+  z-index: 0;
+}
+
+.container, .form, #messages {
+  position: relative;
+  z-index: 1; /* Ensure these elements appear above the overlay */
+}
+

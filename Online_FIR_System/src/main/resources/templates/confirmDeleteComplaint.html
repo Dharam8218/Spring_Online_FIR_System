@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirm Delete Complaint</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    .container { max-width: 500px; margin: auto; }
+    p.warning { color: red; font-weight: bold; }
+    button { padding: 0.75rem 1rem; background-color: #d9534f; color: white; border: none; cursor: pointer; }
+    a { text-decoration: none; color: #5bc0de; margin-left: 1rem; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Confirm Deletion</h2>
+  <p class="warning">Warning: This action cannot be undone!</p>
+  <p>
+    Are you sure you want to delete the complaint with unique ID:
+    <span th:text="${uniqueId}">[Unique ID]</span>?
+  </p>
+  <!-- This form submits a DELETE request to your API endpoint -->
+  <form th:action="@{/delete-complain/{uniqueID}(uniqueID=${uniqueId})}" method="post">
+    <!-- Hidden input to override POST to DELETE (ensure HiddenHttpMethodFilter is enabled) -->
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit">Yes, Delete</button>
+  </form>
+  <br>
+  <a href="/complains">Cancel</a>
+</div>
+</body>
+</html>

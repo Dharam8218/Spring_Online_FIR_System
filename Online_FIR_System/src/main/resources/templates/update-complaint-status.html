@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Complaint Status</title>
+  <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+<div class="container">
+
+  <form id="updateStatusForm" class="form" action="#" method="post">
+
+    <p class="title">Update Complaint Status</p>
+
+
+      <input placeholder="Enter ComplainID" class="input" type="text" id="complainID" name="complainID" required>
+      <select name="newStatus" class="input" id="newStatus" required>
+        <option value="" disabled selected>Select New Status</option>
+        <option value="IN_PROGRESS">IN_PROGRESS</option>
+        <option value="RESOLVED">RESOLVED</option>
+        <option value="REJECTED">REJECTED</option>
+      </select>
+
+    <button type="submit" class="btn">Update Status</button>
+  </form>
+</div>
+<script th:src="@{/js/update-complaint-status.js}"></script>
+</body>
+</html>

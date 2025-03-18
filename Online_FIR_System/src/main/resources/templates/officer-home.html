@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Officer Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg bg-dark-subtle sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bolder fst-italic" href="#">Online FIR System</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active fw-medium" aria-current="page" href="#">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary fw-medium" th:href="@{/OnlineFirSystem/get-all-complains}"
+                       sec:authorize="isAuthenticated()">Get All Complaints</a>
+                </li>
+
+            </ul>
+            <div class="ms-auto d-flex gap-3">
+
+                <div class="dropdown">
+                    <button class="btn btn-outline-success dropdown-toggle fw-medium" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        Dashboard
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item fst-italic" href="/">USER</a></li>
+                        <li><a class="dropdown-item fst-italic" href="#">OFFICER</a></li>
+                        <li><a class="dropdown-item fst-italic" href="/admin-home">ADMIN</a></li>
+                    </ul>
+                </div>
+                <a class="btn btn-outline-success fw-medium" href="/update-complaint-status">Update Complaint
+                    Status </a>
+
+                <a class="btn btn-outline-secondary fw-medium" th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a>
+                <a class="btn btn-outline-secondary fw-medium" href="/logout"
+                   sec:authorize="isAuthenticated()">Logout</a>
+            </div>
+        </div>
+
+    </div>
+</nav>
+<div sec:authorize="authentication != null">
+    <p class="text" sec:authorize="isAuthenticated()">Welcome: <span sec:authentication="name"></span></p>
+</div>
+<!--
+<p sec:authorize="isAuthenticated()">User is authenticated</p>
+<p sec:authorize="!isAuthenticated()">User is not authenticated</p>
+
+<div sec:authorize="authentication != null">
+  Authenticated content
+  Authenticated
+</div>
+<div sec:authorize="authentication == null">
+  Unauthenticated content
+  Unauthenticated
+</div>
+
+-->
+<div class="container my-3" style="max-width: 100vw;">
+    <div class="card mb-3">
+
+        <div class="card-body c-body">
+            <p class="title">Project Introduction: Online FIR System</p>
+
+
+            The Online FIR System is a modern, digital solution designed to transform the traditional process of filing
+            First Information Reports (FIRs). Built using Spring Boot, Java, and modern web technologies, the system
+            enables citizens to easily register, submit, and track their complaints online, while providing law
+            enforcement officers with a streamlined, secure, and efficient platform to manage cases. The system includes
+            robust security features (such as role-based access and Spring Security) and leverages JPA/Hibernate for
+            data persistence, ensuring reliable and real-time information processing.
+
+
+        </div>
+    </div>
+    <div class="scrolling-wrapper d-flex flex-nowrap overflow-auto">
+        <div class="card mx-2" style="min-width: 18rem;">
+            <img src="https://media.istockphoto.com/id/121199853/photo/closeup-of-guy-working-on-a-laptop-indoor.jpg?s=1024x1024&w=is&k=20&c=0uAngvDAolHrh_LUWorV6ZJD5AVO6g2tfavtw9PPHYQ="
+                 class="card-img-top" alt="Card image" style="min-height: 12rem;">
+            <div class="card-body c-body">
+                <h5 class="card-title">Case #1</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-1">Read More..</a>
+            </div>
+        </div>
+        <div class="card mx-2" style="min-width: 18rem;">
+            <img src="https://media.istockphoto.com/id/108224617/photo/silhouette-of-a-prison-police-warden.webp?a=1&b=1&s=612x612&w=0&k=20&c=W-7C2oIRbZ9aeSbGfTSkd8lTfmfFpu0XT3ZcgNka38s="
+                 class="card-img-top" alt="Card image" style="min-height: 12rem;">
+            <div class="card-body c-body">
+                <h5 class="card-title">Case #2</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-1">Read More..</a>
+            </div>
+        </div>
+        <div class="card mx-2" style="min-width: 18rem;">
+            <img src="https://media.istockphoto.com/id/917441686/photo/a-police-car-on-the-street-in-chennai-india.webp?a=1&b=1&s=612x612&w=0&k=20&c=IraXfGQ6Poc8l82MhjjjJPthXkq3ZJcoV_jOWxyEPm4="
+                 class="card-img-top" alt="..." style="min-height: 12rem;">
+            <div class="card-body c-body">
+                <h5 class="card-title">Case #3</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-1">Read More..</a>
+            </div>
+        </div>
+        <div class="card mx-2" style="min-width: 18rem;">
+            <img src="https://media.istockphoto.com/id/1248521447/photo/two-police-officers-behind-crime-scene-tape.webp?a=1&b=1&s=612x612&w=0&k=20&c=lT8BMbx7HeCLvVuzI0jouPwCeP0nSF7FmD-rQvdYOIM="
+                 class="card-img-top" alt="..." style="min-height: 12rem;">
+            <div class="card-body c-body">
+                <h5 class="card-title">Cash #4</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-1">Read More..</a>
+            </div>
+        </div>
+        <div class="card mx-2" style="min-width: 18rem;">
+            <img src="https://media.istockphoto.com/id/1210395363/photo/india-police-traffic-barricades-on-the-side-of-the-road.jpg?s=612x612&w=0&k=20&c=IYfpI7_dx_OJReh3QNEfOVelXAYecRbnTFqrP2ctKvI="
+                 class="card-img-top" alt="..." style="min-height: 12rem;">
+            <div class="card-body c-body">
+                <h5 class="card-title">Case #5</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-1">Read More..</a>
+            </div>
+        </div>
+        <div class="card mx-2" style="min-width: 18rem;">
+            <img src="https://media.istockphoto.com/id/2103528351/photo/arrested-man-holding-dollars-and-cocaine.jpg?s=612x612&w=0&k=20&c=Ednru99LvVDtk2KII3OR4hk_Xh_PlNOEjAHBqOKlD6A="
+                 class="card-img-top" alt="..." style="min-height: 12rem;">
+            <div class="card-body c-body">
+                <h5 class="card-title">Case #6</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-1">Read More..</a>
+            </div>
+        </div>
+        <div class="card mx-2" style="min-width: 18rem;">
+            <img src="https://media.istockphoto.com/id/1480308101/photo/male-policeman-forcing-a-compliant-civilian-on-the-hood-of-police-car-officer-violently.jpg?s=612x612&w=0&k=20&c=N2G5lwpx4S53Szn9nBtL9TmieAgtIXM0ysk2UHxh9M4="
+                 class="card-img-top" alt="..." style="min-height: 12rem;">
+            <div class="card-body c-body">
+                <h5 class="card-title">Case #7</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-1">Read More..</a>
+            </div>
+        </div>
+        <div class="card mx-2" style="min-width: 18rem;">
+            <img src="https://media.istockphoto.com/id/121199853/photo/closeup-of-guy-working-on-a-laptop-indoor.jpg?s=1024x1024&w=is&k=20&c=0uAngvDAolHrh_LUWorV6ZJD5AVO6g2tfavtw9PPHYQ="
+                 class="card-img-top" alt="..." style="min-height: 12rem;">
+            <div class="card-body c-body">
+                <h5 class="card-title">Case #8</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-1">Read More..</a>
+            </div>
+        </div>
+        <div class="card mx-2" style="min-width: 18rem;">
+            <img src="https://media.istockphoto.com/id/121199853/photo/closeup-of-guy-working-on-a-laptop-indoor.jpg?s=1024x1024&w=is&k=20&c=0uAngvDAolHrh_LUWorV6ZJD5AVO6g2tfavtw9PPHYQ="
+                 class="card-img-top" alt="..." style="min-height: 12rem;">
+            <div class="card-body c-body">
+                <h5 class="card-title">Case #9</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                <a href="#" class="btn btn-1">Read More..</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/index.js}"></script>
+</body>
+</html>

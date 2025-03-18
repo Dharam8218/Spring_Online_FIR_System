@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Complaint</title>
+    <link rel="stylesheet" th:href="@{/css/manage.css}">
+</head>
+<body>
+<div class="container">
+
+    <form id="manageComplaintForm" class="form" action="@{/OnlineFirSystem/delete-complain/{uniqueID}(uniqueID=${uniqueID})}" method="post">
+        <p class="title">Manage Complaint</p>
+        <div class="form-group">
+
+            <input placeholder="Enter UniqueID" class="input" type="text" id="uniqueID" name="uniqueID" required>
+        </div>
+        <div class="button">
+        <button class="btn" type="button" onclick="submitForm('delete')">Delete Complaint</button>
+        <button class="btn" type="button" onclick="submitForm('status')">Check Status</button>
+        <button class="btn" type="button" onclick="submitForm('details')">Get Complaint Details</button>
+
+        </div>
+        <button class="btn" type="button" onclick="submitForm('update')">Update Complaint</button>
+    </form>
+</div>
+<script th:src="@{/js/manage.js}"></script>
+</body>
+</html>
