@@ -14,7 +14,7 @@ i. Backend: Spring Boot, Core Java, RestAPI
 ii. Frontend: Thymeleaf, HTML, CSS, JavaScript, Bootstrap
 iii. Database: Oracle 10g
 
-🚀 How to Run
+🚀 How to Run\
 a. Clone the repository.
 b. Configure application.properties for Oracle DB.
 c. Run the application using Spring Boot.
