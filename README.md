@@ -10,11 +10,11 @@ The Online FIR System provides a platform for users to file complaints, track th
 3. Secure data management with Oracle 10g.
 
 🛠️ Technologies Used
-i. Backend: Spring Boot, Core Java, RestAPI
-ii. Frontend: Thymeleaf, HTML, CSS, JavaScript, Bootstrap
-iii. Database: Oracle 10g
+1. Backend: Spring Boot, Core Java, RestAPI
+2. Frontend: Thymeleaf, HTML, CSS, JavaScript, Bootstrap
+3. Database: Oracle 10g
 
 🚀 How to Run\
-a. Clone the repository.
-b. Configure application.properties for Oracle DB.
-c. Run the application using Spring Boot.
+1. Clone the repository.
+2. Configure application.properties for Oracle DB.
+3. Run the application using Spring Boot.
