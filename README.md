@@ -8,10 +8,12 @@ The Online FIR System provides a platform for users to file complaints, track th
 1. Register and log complaints online.
 2. View, update, and track complaint status.
 3. Secure data management with Oracle 10g.
+
 🛠️ Technologies Used
 i. Backend: Spring Boot, Core Java, RestAPI
 ii. Frontend: Thymeleaf, HTML, CSS, JavaScript, Bootstrap
 iii. Database: Oracle 10g
+
 🚀 How to Run
 a. Clone the repository.
 b. Configure application.properties for Oracle DB.
