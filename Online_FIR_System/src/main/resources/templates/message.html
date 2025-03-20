@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>#####</title>
+    <style>
+        .status-message {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Display status if available -->
+<div th:if="${statusMessage}" class="status-message">
+    <p th:text="${statusMessage}"></p>
+</div>
+
+</body>
+</html>
