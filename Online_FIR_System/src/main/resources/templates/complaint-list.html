@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>List of Complaints</title>
+    <!-- Linking External CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/complaint-list.css}">
+</head>
+<body>
+
+<h2>List of Complaints</h2>
+
+<!-- Complaints Table -->
+<table>
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Mobile No</th>
+        <th>Complain Type</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Loop through complaint list and display rows -->
+    <tr th:each="complain : ${complainList}" th:onclick="showDetails([[${complain}]])">
+        <td th:text="${complain.userResponse.userName}"></td>
+        <td th:text="${complain.userResponse.email}"></td>
+        <td th:text="${complain.userResponse.mobileNo}"></td>
+        <td th:text="${complain.complainType}"></td>
+        <td th:text="${complain.statusOfComplaint}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Complaint Details Section (Hidden by default) -->
+<div id="detailsSection">
+    <h3>Complaint Details</h3>
+    <p><strong>Username:</strong> <span id="username"></span></p>
+    <p><strong>Email:</strong> <span id="email"></span></p>
+    <p><strong>Mobile No:</strong> <span id="mobileNo"></span></p>
+    <p><strong>Police Station:</strong> <span id="policeStation"></span></p>
+    <p><strong>Complain Type:</strong> <span id="complainType"></span></p>
+    <p><strong>Place of Incident:</strong> <span id="placeOfIncident"></span></p>
+    <p><strong>Description:</strong> <span id="description"></span></p>
+    <p><strong>Status:</strong> <span id="status"></span></p>
+    <p><strong>Evidence:</strong> <a id="evidenceLink" href="#" target="_blank">View Evidence</a></p>
+    <button onclick="hideDetails()">Close</button>
+</div>
+
+<!-- Linking JavaScript File -->
+<script th:src="@{/js/complaint-list.js}"></script>
+
+</body>
+</html>

@@ -58,11 +58,19 @@ public class ComplainController {
         return complainResponse != null ? new ResponseEntity<>(complainResponse, HttpStatus.FOUND)
                 : new ResponseEntity<>("Complain not found with this uniqueID: " + uniqueID, HttpStatus.NOT_FOUND);
     }
-
+    /*
     @GetMapping("/get-all-complains")
     public ResponseEntity<List<ComplainResponse>> getAllComplains() {
         List<ComplainResponse> allComplains = complainService.getAllComplains();
         return new ResponseEntity<>(allComplains, HttpStatus.FOUND);
+    }
+     */
+    @GetMapping("/get-all-complains")
+    public ModelAndView getAllComplains() {
+        List<ComplainResponse> allComplains = complainService.getAllComplains();
+        ModelAndView modelAndView = new ModelAndView("complaint-list");
+        modelAndView.addObject("complainList", allComplains);
+        return modelAndView;
     }
 
     @PostMapping("update-Complain-Status/{complainID}/{newStatus}")
