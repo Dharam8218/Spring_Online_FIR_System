@@ -8,7 +8,7 @@
 <body>
 
 <div class="container">
-  <form class="form" th:action="@{/OnlineFirSystem/register-complain}" method="post">
+  <form class="form" th:action="@{/OnlineFirSystem/register-complain}" enctype="multipart/form-data" method="post">
     <p class="title">Register a Complaint</p>
 
     <!-- Complaint Type Dropdown -->
@@ -24,6 +24,10 @@
     <!-- Place of Incident -->
     <input placeholder="Place of Incident" class="input" type="text" name="placeOfIncident" required/>
 
+    <!-- Evidence -> Image/Video -->
+    <label class="input">Upload Evidence (Image/Video)
+    <input type="file" id="file" name="file" accept="image/*,video/*" required>
+    </label>
     <!-- Description -->
     <textarea placeholder="Description" class="input" name="description" rows="4" required></textarea>
 

@@ -5,11 +5,16 @@ import com.accio.Online_FIR_System.dto.response.ComplainSummary;
 import com.accio.Online_FIR_System.entity.Complain;
 import com.accio.Online_FIR_System.service.ComplainService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+
 
 
 @RestController
@@ -20,8 +25,8 @@ public class ComplainController {
     ComplainService complainService;
 
     @PostMapping("/register-complain")
-    public ResponseEntity<String> registerComplain(@ModelAttribute Complain complain) {
-        String uniqueID = complainService.registerComplain(complain);
+    public ResponseEntity<String> registerComplain(@ModelAttribute Complain complain, @RequestParam("file") MultipartFile file) {
+        String uniqueID = complainService.registerComplain(complain,file);
         String message = "Complain registered successfully!! \n Your unique id is " + uniqueID + ". Keep it future reference or track your complaint.";
         return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
@@ -72,5 +77,27 @@ public class ComplainController {
         List<ComplainSummary> allComplains = complainService.getComplainSummary();
         return new ResponseEntity<>(allComplains, HttpStatus.FOUND);
     }
+
+
+    /*
+    * Just to check complain response on frontend
+    * */
+
+    @GetMapping("/get-complain-response/{uniqueID}")
+    public ModelAndView getComplainResponse(@PathVariable("uniqueID") String uniqueID){
+       return complainService.getComplainResponse(uniqueID);
+    }
+
+    @GetMapping("/view-evidence/{uniqueID}")
+    public ModelAndView viewEvidence(@PathVariable("uniqueID") String uniqueID) {
+        return complainService.viewEvidence(uniqueID);
+    }
+
+    @GetMapping("/view-evidence/uploads/{fileName}")
+    public ResponseEntity<Resource> serveFile(@PathVariable String fileName) {
+       return complainService.serveFile(fileName);
+    }
+
+
 
 }

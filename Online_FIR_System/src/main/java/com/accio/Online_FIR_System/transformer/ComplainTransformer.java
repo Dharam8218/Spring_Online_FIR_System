@@ -14,6 +14,7 @@ public class ComplainTransformer {
                 .placeOfIncident(complain.getPlaceOfIncident())
                 .description(complain.getDescription())
                 .statusOfComplaint(complain.getStatusOfComplaint())
+                .evidence(complain.getFilePath())
                 .build();
 
     }

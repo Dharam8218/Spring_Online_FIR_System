@@ -39,6 +39,7 @@ public class Complain {
     private String placeOfIncident;
     private String description;
     private String statusOfComplaint;
+    private String filePath;
 
 
     private LocalDate filedDate;

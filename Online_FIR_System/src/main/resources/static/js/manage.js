@@ -20,7 +20,8 @@ function submitForm(actionType) {
     } else if (actionType === 'status') {
         actionUrl = `/OnlineFirSystem/check-status/${uniqueID}`;
     } else if (actionType === 'details') {
-        actionUrl = `/OnlineFirSystem/get-complain-details/${uniqueID}`;
+        //actionUrl = `/OnlineFirSystem/get-complain-details/${uniqueID}`;
+        actionUrl = `/OnlineFirSystem/get-complain-response/${uniqueID}`;
     }else if(actionType === 'update'){
        window.location.href="/update-complain?uniqueID="+ encodeURIComponent(uniqueID);
        return;

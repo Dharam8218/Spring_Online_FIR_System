@@ -13,10 +13,22 @@ import com.accio.Online_FIR_System.repository.OfficerRepository;
 import com.accio.Online_FIR_System.repository.UserRepository;
 import com.accio.Online_FIR_System.transformer.ComplainTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -29,11 +41,13 @@ public class ComplainService {
     UserRepository userRepository;
     @Autowired
     OfficerRepository officerRepository;
+    @Autowired
+    FileService fileService;
 
 
     String uniqueId = generateUniqueId();
 
-    public String registerComplain(Complain complain) {
+    public String registerComplain(Complain complain, MultipartFile file) {
         while (complainRepository.findByUniqueID(uniqueId).isPresent()) {
             uniqueId = generateUniqueId();
         }
@@ -43,6 +57,10 @@ public class ComplainService {
         complain.setUniqueID(uniqueId);
         complain.setStatusOfComplaint("UNDER_REVIEW");
         complain.setFiledDate(LocalDate.now());
+        if (!file.isEmpty()) {
+            String filePath = fileService.uploadFile(file);
+            complain.setFilePath(filePath);
+        }
         complainRepository.save(complain);
         return uniqueId;
     }
@@ -153,5 +171,62 @@ public class ComplainService {
         }
 
         return list;
+    }
+
+
+
+
+    public ModelAndView getComplainResponse(@PathVariable("uniqueID") String uniqueID) {
+        Optional<Complain> optionalComplain = complainRepository.findByUniqueID(uniqueID);
+        if (optionalComplain.isPresent()) {
+            Complain complain = optionalComplain.get();
+            ComplainResponse complainResponse = ComplainTransformer.complainToComplainResponse(complain);
+            ModelAndView modelAndView = new ModelAndView("complain-response");
+            modelAndView.addObject("complainResponse", complainResponse);
+            return modelAndView;
+        } else {
+            return new ModelAndView("error-404");
+        }
+
+    }
+
+    public ModelAndView viewEvidence(@PathVariable("uniqueID") String uniqueID) {
+        Optional<Complain> optionalComplain = complainRepository.findByUniqueID(uniqueID);
+
+        if (optionalComplain.isPresent()) {
+            Complain complain = optionalComplain.get();
+            String evidenceUrl = complain.getFilePath(); // Assuming evidence URL is stored
+
+            ModelAndView modelAndView = new ModelAndView("view-evidence");
+            modelAndView.addObject("evidenceUrl", evidenceUrl);
+            return modelAndView;
+        } else {
+            return new ModelAndView("error-404");
+        }
+    }
+
+
+    public ResponseEntity<Resource> serveFile(@PathVariable String fileName) {
+        Path filePath = Paths.get("uploads").resolve(fileName);
+        Resource resource;
+        try {
+            resource = new UrlResource(filePath.toUri());
+            if (resource.exists() || resource.isReadable()) {
+                String contentType = Files.probeContentType(filePath);
+
+                if (contentType == null) {
+                    contentType = "application/octet-stream";
+                }
+
+                return ResponseEntity.ok()
+                        .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + fileName + "\"")
+                        .header(HttpHeaders.CONTENT_TYPE, contentType)
+                        .body(resource);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (IOException e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }

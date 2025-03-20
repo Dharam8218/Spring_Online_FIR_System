@@ -17,4 +17,5 @@ public class ComplainResponse {
     private String placeOfIncident;
     private String description;
     private String statusOfComplaint;
+    private String evidence;
 }

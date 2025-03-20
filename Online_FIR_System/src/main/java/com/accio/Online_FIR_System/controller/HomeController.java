@@ -63,4 +63,9 @@ public class HomeController {
     public String updateComplainInfo() {
         return "update-complain";
     }
+
+    @GetMapping("/complain-response")
+    public String getComplainResponse(){
+        return "complain-response";
+    }
 }
