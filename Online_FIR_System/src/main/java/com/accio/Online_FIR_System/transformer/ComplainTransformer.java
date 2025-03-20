@@ -9,6 +9,7 @@ public class ComplainTransformer {
     public static ComplainResponse complainToComplainResponse(Complain complain) {
         return ComplainResponse.builder()
                 .userResponse(UserTransformer.userToUserResponse(complain.getFiledBy()))
+                .complainID(complain.getComplainID())
                 .complainType(complain.getComplainType())
                 .nearestPoliceStation(complain.getNearestPoliceStationCode())
                 .placeOfIncident(complain.getPlaceOfIncident())

@@ -1,5 +1,8 @@
+let selectedComplainId = null;
+
 // Show details when a row is clicked
 function showDetails(complain) {
+     selectedComplainId = complain.complainID;
     document.getElementById('username').innerText = complain.userResponse.userName;
     document.getElementById('email').innerText = complain.userResponse.email;
     document.getElementById('mobileNo').innerText = complain.userResponse.mobileNo;
@@ -24,4 +27,13 @@ function showDetails(complain) {
 // Hide the details section
 function hideDetails() {
     document.getElementById('detailsSection').style.display = 'none';
+}
+
+function openUpdateStatusPage() {
+    if (selectedComplainId) {
+        sessionStorage.setItem('complainId', selectedComplainId);
+        window.location.href = '/update-complaint-status';
+    } else {
+        alert("Please select a complaint first.");
+    }
 }

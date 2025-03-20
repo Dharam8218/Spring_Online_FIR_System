@@ -12,6 +12,7 @@ import lombok.*;
 public class ComplainResponse {
 
     private UserResponse userResponse;
+    private int complainID;
     private String nearestPoliceStation;
     private String complainType;
     private String placeOfIncident;

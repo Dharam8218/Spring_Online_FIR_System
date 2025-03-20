@@ -16,3 +16,14 @@
       // Now submit the form normally
       this.submit();
     });
+
+    document.addEventListener('DOMContentLoaded', function () {
+          const complainId = sessionStorage.getItem('complainId');
+          console.log(complainId);
+          if (complainId) {
+              // Set the value of the input field in Thymeleaf
+              document.getElementById('complainID').value = complainId;
+          } else {
+              alert('No complaint ID found.');
+          }
+      });
