@@ -18,7 +18,7 @@
        border-radius: 8px;
        box-shadow: 0 0 10px rgba(0,0,0,0.1);
    }
-     p{
+     h2{
      color: #007bff;
      }
        .btn {
@@ -39,7 +39,7 @@
 
 <!-- Display status if available -->
 <div th:if="${statusMessage}" class="container">
-    <p th:text="${statusMessage}"></p>
+    <h2 th:text="${statusMessage}"></h2>
     <a class="btn btn-secondary" sec:authorize="hasRole('ROLE_NORMAL')" th:href="@{/}">Go To Home Page</a>
     <a class="btn btn-secondary" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin-home}">Go To Home Page</a>
     <a class="btn btn-secondary" sec:authorize="hasRole('ROLE_OFFICER')" th:href="@{/officer-home}">Go To Home Page</a>
