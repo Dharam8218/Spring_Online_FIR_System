@@ -4,32 +4,41 @@
 <head>
     <title>#####</title>
     <style>
-        .status-message {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-            width: 100vw;
-            text-align:center;
-        }
-        .btn {
-        text-decoration: none;
-        padding: 10px 15px;
-        background-color: #007bff;
-        color: white;
-        border-radius: 4px;
-        margin-top: 10px;
-    }
+        body {
+       font-family: Arial, sans-serif;
+       background-color: #f8f9fa;
+       margin: 20px;
+   }
 
-    .btn-secondary {
-        background-color: #6c757d;
-    }
+   .container {
+       max-width: 800px;
+       margin: auto;
+       background: #fff;
+       padding: 20px;
+       border-radius: 8px;
+       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+   }
+     p{
+     color: #007bff;
+     }
+       .btn {
+       text-decoration: none;
+       padding: 10px 15px;
+       background-color: #007bff;
+       color: white;
+       border-radius: 4px;
+       margin-top: 10px;
+   }
+
+   .btn-secondary {
+       background-color: #6c757d;
+   }
     </style>
 </head>
 <body>
 
 <!-- Display status if available -->
-<div th:if="${statusMessage}" class="status-message">
+<div th:if="${statusMessage}" class="container">
     <p th:text="${statusMessage}"></p>
     <a class="btn btn-secondary" sec:authorize="hasRole('ROLE_NORMAL')" th:href="@{/}">Go To Home Page</a>
     <a class="btn btn-secondary" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin-home}">Go To Home Page</a>
