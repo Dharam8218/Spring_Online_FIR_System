@@ -31,9 +31,10 @@
 <!-- Display status if available -->
 <div th:if="${statusMessage}" class="status-message">
     <p th:text="${statusMessage}"></p>
-    <button class="btn btn-secondary" sec:authorize="hasRole('ROLE_NORMAL')" th:href="@{/}">Go To Home Page</button>
-    <button class="btn btn-secondary" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/officer-home}">Go To Home Page</button>
-    <button class="btn btn-secondary" sec:authorize="hasRole('ROLE_OFFICER')" th:href="@{/admin-home}">Go To Home Page</button>
+    <a class="btn btn-secondary" sec:authorize="hasRole('ROLE_NORMAL')" th:href="@{/}">Go To Home Page</a>
+    <a class="btn btn-secondary" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/officer-home}">Go To Home Page</a>
+    <a class="btn btn-secondary" sec:authorize="hasRole('ROLE_OFFICER')" th:href="@{/admin-home}">Go To Home Page</a>
+
 </div>
 
 </body>
