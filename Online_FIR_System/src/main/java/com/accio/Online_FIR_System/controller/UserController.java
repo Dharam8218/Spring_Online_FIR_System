@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/OnlineFirSystem")
@@ -14,11 +15,20 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    /*
     @PostMapping("/add-user")
     public ResponseEntity<String> addUser(@ModelAttribute UserRequest userRequest) {
         userService.addUser(userRequest);
-        return new ResponseEntity<>("User added Successfully!", HttpStatus.CREATED);
+        return new ResponseEntity<>("Account created Successfully!", HttpStatus.CREATED);
     }
-
+     */
+    @PostMapping("/add-user")
+    public ModelAndView addUser(@ModelAttribute UserRequest userRequest) {
+        userService.addUser(userRequest);
+        String message = "Account created Successfully!!";
+        ModelAndView modelAndView = new ModelAndView("message");
+        modelAndView.addObject("statusMessage",message);
+        return modelAndView;
+    }
 
 }
