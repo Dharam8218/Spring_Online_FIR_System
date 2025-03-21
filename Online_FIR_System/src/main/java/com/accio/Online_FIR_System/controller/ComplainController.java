@@ -1,5 +1,7 @@
 package com.accio.Online_FIR_System.controller;
 
+import com.accio.Online_FIR_System.Exception.ComplainNotFoundException;
+import com.accio.Online_FIR_System.Exception.OfficerNotFoundException;
 import com.accio.Online_FIR_System.dto.response.ComplainResponse;
 import com.accio.Online_FIR_System.dto.response.ComplainSummary;
 import com.accio.Online_FIR_System.entity.Complain;
@@ -112,10 +114,16 @@ public class ComplainController {
      */
     @GetMapping("/get-all-complains")
     public ModelAndView getAllComplains() {
-        List<ComplainResponse> allComplains = complainService.getAllComplains();
-        ModelAndView modelAndView = new ModelAndView("complaint-list");
-        modelAndView.addObject("complainList", allComplains);
-        return modelAndView;
+        try {
+            List<ComplainResponse> allComplains = complainService.getAllComplains();
+            ModelAndView modelAndView = new ModelAndView("complaint-list");
+            modelAndView.addObject("complainList", allComplains);
+            return modelAndView;
+        }catch(OfficerNotFoundException | ComplainNotFoundException e){
+            ModelAndView modelAndView = new ModelAndView("error");
+            modelAndView.addObject("error",e.getMessage());
+            return modelAndView;
+        }
     }
 
     /*
@@ -128,10 +136,16 @@ public class ComplainController {
 
     @PostMapping("update-Complain-Status/{complainID}/{newStatus}")
     public ModelAndView updateStatusOfComplain(@PathVariable("complainID") int complainID, @PathVariable("newStatus") String newStatus) {
-        String message = complainService.updateStatusOfComplain(complainID, newStatus);
-        ModelAndView modelAndView = new ModelAndView("message");
-        modelAndView.addObject("statusMessage",message);
-        return modelAndView;
+        try {
+            String message = complainService.updateStatusOfComplain(complainID, newStatus);
+            ModelAndView modelAndView = new ModelAndView("message");
+            modelAndView.addObject("statusMessage", message);
+            return modelAndView;
+        }catch(OfficerNotFoundException | ComplainNotFoundException e){
+            ModelAndView modelAndView = new ModelAndView("error");
+            modelAndView.addObject("error",e.getMessage());
+            return modelAndView;
+        }
     }
 
 
