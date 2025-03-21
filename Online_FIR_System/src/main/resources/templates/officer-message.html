@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Officer Credentials</title>
+    <style>
+        .complaint-container {
+            width: 100vw;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        .complaint-item {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        .complaint-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align: center;">Credentials</h2>
+
+<div class="complaint-container">
+    <!-- Loop through the list -->
+    <div th:each="message : ${list}" class="complaint-item">
+        <p th:text="${message}"></p>
+    </div>
+</div>
+
+
+</body>
+</html>
