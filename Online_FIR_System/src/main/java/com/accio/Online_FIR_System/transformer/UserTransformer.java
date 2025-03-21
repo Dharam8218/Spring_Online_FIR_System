@@ -10,11 +10,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class UserTransformer {
 
     @Bean
-    public static PasswordEncoder passwordEncoder(){
+    public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    public static User userRequestToUser(UserRequest userRequest){
+    public static User userRequestToUser(UserRequest userRequest) {
         return User
                 .builder()
                 .userName(userRequest.getUserName())
@@ -26,8 +26,8 @@ public class UserTransformer {
                 .build();
     }
 
-    public static UserResponse userToUserResponse(User user){
-        return  UserResponse
+    public static UserResponse userToUserResponse(User user) {
+        return UserResponse
                 .builder()
                 .userName(user.getUserName())
                 .mobileNo(user.getMobileNo())

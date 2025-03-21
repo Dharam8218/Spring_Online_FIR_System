@@ -27,7 +27,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers("/", "/css/**", "/js/**").permitAll()
                 .requestMatchers("/login", "/signup").permitAll()
-                .requestMatchers("/register-complaint", "/manage-complaint", "/update-complain","/complain-response","/get-complain-response","/view-evidence").hasRole("NORMAL")
+                .requestMatchers("/register-complaint", "/manage-complaint", "/update-complain", "/complain-response", "/get-complain-response", "/view-evidence").hasRole("NORMAL")
                 .requestMatchers("/OnlineFirSystem/add-user").permitAll()
                 .requestMatchers("/OnlineFirSystem/complain-summary").permitAll()
                 .requestMatchers("/OnlineFirSystem").hasRole("NORMAL")

@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 
-
 @RestController
 @RequestMapping("/OnlineFirSystem")
 public class ComplainController {
@@ -36,10 +35,10 @@ public class ComplainController {
 
     @PostMapping("/register-complain")
     public ModelAndView registerComplain(@ModelAttribute Complain complain, @RequestParam("file") MultipartFile file) {
-        String uniqueID = complainService.registerComplain(complain,file);
+        String uniqueID = complainService.registerComplain(complain, file);
         String message = "Complain registered successfully!! \n Your unique id is " + uniqueID + ". Keep it future reference or track your complaint.";
         ModelAndView modelAndView = new ModelAndView("message");
-        modelAndView.addObject("statusMessage",message);
+        modelAndView.addObject("statusMessage", message);
         return modelAndView;
     }
 
@@ -57,7 +56,7 @@ public class ComplainController {
         boolean isDeleted = complainService.deleteComplain(uniqueID);
         String message = isDeleted ? "Complain deleted successfully!!" : "Complain not found with this uniqueID: " + uniqueID;
         ModelAndView modelAndView = new ModelAndView("message");
-        modelAndView.addObject("statusMessage",message);
+        modelAndView.addObject("statusMessage", message);
         return modelAndView;
     }
 
@@ -75,7 +74,7 @@ public class ComplainController {
         boolean isUpdated = complainService.updateComplain(uniqueID, complain);
         String message = isUpdated ? "Complain updated successfully" : "Complain not found with this uniqueID: " + uniqueID;
         ModelAndView modelAndView = new ModelAndView("message");
-        modelAndView.addObject("statusMessage",message);
+        modelAndView.addObject("statusMessage", message);
         return modelAndView;
     }
 
@@ -93,7 +92,7 @@ public class ComplainController {
         String status = complainService.checkStatus(uniqueID);
         String message = status != null ? status : "Complain not found with this uniqueID: " + uniqueID;
         ModelAndView modelAndView = new ModelAndView("message");
-        modelAndView.addObject("statusMessage",message);
+        modelAndView.addObject("statusMessage", message);
         return modelAndView;
     }
 
@@ -119,9 +118,9 @@ public class ComplainController {
             ModelAndView modelAndView = new ModelAndView("complaint-list");
             modelAndView.addObject("complainList", allComplains);
             return modelAndView;
-        }catch(OfficerNotFoundException | ComplainNotFoundException e){
+        } catch (OfficerNotFoundException | ComplainNotFoundException e) {
             ModelAndView modelAndView = new ModelAndView("error");
-            modelAndView.addObject("error",e.getMessage());
+            modelAndView.addObject("error", e.getMessage());
             return modelAndView;
         }
     }
@@ -141,9 +140,9 @@ public class ComplainController {
             ModelAndView modelAndView = new ModelAndView("message");
             modelAndView.addObject("statusMessage", message);
             return modelAndView;
-        }catch(OfficerNotFoundException | ComplainNotFoundException e){
+        } catch (OfficerNotFoundException | ComplainNotFoundException e) {
             ModelAndView modelAndView = new ModelAndView("error");
-            modelAndView.addObject("error",e.getMessage());
+            modelAndView.addObject("error", e.getMessage());
             return modelAndView;
         }
     }
@@ -157,12 +156,12 @@ public class ComplainController {
 
 
     /*
-    * Just to check complain response on frontend
-    * */
+     * Just to check complain response on frontend
+     * */
 
     @GetMapping("/get-complain-response/{uniqueID}")
-    public ModelAndView getComplainResponse(@PathVariable("uniqueID") String uniqueID){
-       return complainService.getComplainResponse(uniqueID);
+    public ModelAndView getComplainResponse(@PathVariable("uniqueID") String uniqueID) {
+        return complainService.getComplainResponse(uniqueID);
     }
 
     @GetMapping("/view-evidence/{uniqueID}")
@@ -172,9 +171,8 @@ public class ComplainController {
 
     @GetMapping("/view-evidence/uploads/{fileName}")
     public ResponseEntity<Resource> serveFile(@PathVariable String fileName) {
-       return complainService.serveFile(fileName);
+        return complainService.serveFile(fileName);
     }
-
 
 
 }

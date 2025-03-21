@@ -29,7 +29,7 @@ public class PoliceStationController {
         policeStationService.addPoliceStation(policeStation);
         String message = "Police Station added Successfully!!";
         ModelAndView modelAndView = new ModelAndView("message");
-        modelAndView.addObject("statusMessage",message);
+        modelAndView.addObject("statusMessage", message);
         return modelAndView;
     }
 

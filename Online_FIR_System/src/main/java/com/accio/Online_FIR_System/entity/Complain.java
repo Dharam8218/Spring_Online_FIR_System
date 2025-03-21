@@ -45,6 +45,4 @@ public class Complain {
     private LocalDate filedDate;
 
 
-
-
 }

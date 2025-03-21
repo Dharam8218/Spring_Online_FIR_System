@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface PoliceStationRepository  extends JpaRepository<PoliceStation,Integer> {
+public interface PoliceStationRepository extends JpaRepository<PoliceStation, Integer> {
     Optional<PoliceStation> findByUniqueStationCode(String uniqueStationCode);
 }

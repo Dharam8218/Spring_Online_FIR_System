@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Sign Up</title>
-  <!-- Reusing the same CSS file as login for similar styling -->
-  <link rel="stylesheet" th:href="@{/css/signup.css}">
+    <title>Sign Up</title>
+    <!-- Reusing the same CSS file as login for similar styling -->
+    <link rel="stylesheet" th:href="@{/css/signup.css}">
 </head>
 <body>
 <div class="container">
-  <form class="form" th:action="@{/OnlineFirSystem/add-user}" method="post">
-    <p class="title">Sign Up</p>
+    <form class="form" th:action="@{/OnlineFirSystem/add-user}" method="post">
+        <p class="title">Sign Up</p>
 
-    <!-- Username Field -->
-    <input type="text" name="userName" placeholder="Username" class="input" required />
+        <!-- Username Field -->
+        <input type="text" name="userName" placeholder="Username" class="input" required/>
 
-    <!-- Password Field -->
-    <input type="password" name="password" placeholder="Password" class="input" required />
+        <!-- Password Field -->
+        <input type="password" name="password" placeholder="Password" class="input" required/>
 
-    <!-- Email Field -->
-    <input type="email" name="email" placeholder="Email" class="input" required />
+        <!-- Email Field -->
+        <input type="email" name="email" placeholder="Email" class="input" required/>
 
-    <!-- Mobile Number Field -->
-    <input type="number" name="mobileNo" placeholder="Mobile Number" class="input" required />
+        <!-- Mobile Number Field -->
+        <input type="number" name="mobileNo" placeholder="Mobile Number" class="input" required/>
 
-    <!-- Gender Field -->
-    <select name="gender" class="input" required>
-      <option value="" disabled selected>Select Gender</option>
-      <option value="MALE">Male</option>
-      <option value="FEMALE">Female</option>
-      <option value="OTHER">Other</option>
-    </select>
+        <!-- Gender Field -->
+        <select name="gender" class="input" required>
+            <option value="" disabled selected>Select Gender</option>
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+            <option value="OTHER">Other</option>
+        </select>
 
-    <!-- Submit Button -->
-    <button type="submit" class="btn">Sign Up</button>
-  </form>
+        <!-- Submit Button -->
+        <button type="submit" class="btn">Sign Up</button>
+    </form>
 </div>
 </body>
 </html>

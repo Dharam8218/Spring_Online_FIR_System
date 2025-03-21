@@ -13,11 +13,11 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @PrimaryKeyJoinColumn(name = "userID")
 @DiscriminatorValue("OFFICER")
-public class Officer extends User{
+public class Officer extends User {
 
     // Unique officer identifier (different from the generated userID)
 
-    @Column(name="officer_id", unique = true, nullable = false)
+    @Column(name = "officer_id", unique = true, nullable = false)
     private String officerId;
 
     // Many officers belong to one police station.

@@ -13,9 +13,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ComplainRepository extends JpaRepository<Complain,Integer> {
+public interface ComplainRepository extends JpaRepository<Complain, Integer> {
 
     Optional<Complain> findByUniqueID(String uniqueID);
+
     List<Complain> findByPoliceStation(PoliceStation policeStation);
 
     Complain findByComplainID(int complainID);

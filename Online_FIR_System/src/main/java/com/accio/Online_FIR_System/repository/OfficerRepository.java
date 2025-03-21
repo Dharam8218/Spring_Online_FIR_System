@@ -8,9 +8,11 @@ import java.util.Optional;
 
 
 @Repository
-public interface OfficerRepository extends JpaRepository<Officer,Integer> {
+public interface OfficerRepository extends JpaRepository<Officer, Integer> {
 
     Officer findByUserName(String userName);
+
     Optional<Officer> findByOfficerId(String officerId);
+
     Optional<Officer> findByPassword(String password);
 }

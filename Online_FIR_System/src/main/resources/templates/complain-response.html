@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Complaint Details</title>
-  <link rel="stylesheet" th:href="@{/css/complain-response.css}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Details</title>
+    <link rel="stylesheet" th:href="@{/css/complain-response.css}">
 </head>
 <body>
 
 <div class="container">
-  <h2>Complaint Details</h2>
+    <h2>Complaint Details</h2>
 
-  <!-- User Details -->
-  <div class="card">
-    <h4>User Information</h4>
-    <p><strong>Name:</strong> <span th:text="${complainResponse.userResponse.userName}"></span></p>
-    <p><strong>Email:</strong> <span th:text="${complainResponse.userResponse.email}"></span></p>
-    <p><strong>Phone:</strong> <span th:text="${complainResponse.userResponse.mobileNo}"></span></p>
-  </div>
+    <!-- User Details -->
+    <div class="card">
+        <h4>User Information</h4>
+        <p><strong>Name:</strong> <span th:text="${complainResponse.userResponse.userName}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${complainResponse.userResponse.email}"></span></p>
+        <p><strong>Phone:</strong> <span th:text="${complainResponse.userResponse.mobileNo}"></span></p>
+    </div>
 
-  <!-- Complaint Details -->
-  <div class="card">
-    <h4>Complaint Information</h4>
-    <p><strong>Nearest Police Station:</strong> <span th:text="${complainResponse.nearestPoliceStation}"></span></p>
-    <p><strong>Complaint Type:</strong> <span th:text="${complainResponse.complainType}"></span></p>
-    <p><strong>Place of Incident:</strong> <span th:text="${complainResponse.placeOfIncident}"></span></p>
-    <p><strong>Description:</strong> <span th:text="${complainResponse.description}"></span></p>
-    <p><strong>Status of Complaint:</strong> <span th:text="${complainResponse.statusOfComplaint}"></span></p>
-  </div>
+    <!-- Complaint Details -->
+    <div class="card">
+        <h4>Complaint Information</h4>
+        <p><strong>Nearest Police Station:</strong> <span th:text="${complainResponse.nearestPoliceStation}"></span></p>
+        <p><strong>Complaint Type:</strong> <span th:text="${complainResponse.complainType}"></span></p>
+        <p><strong>Place of Incident:</strong> <span th:text="${complainResponse.placeOfIncident}"></span></p>
+        <p><strong>Description:</strong> <span th:text="${complainResponse.description}"></span></p>
+        <p><strong>Status of Complaint:</strong> <span th:text="${complainResponse.statusOfComplaint}"></span></p>
+    </div>
 
-  <!-- Evidence Link -->
-  <div class="card">
-    <h4>Evidence</h4>
-    <p>
-      <strong>File:</strong>
-      <a th:if="${complainResponse.evidence != null and complainResponse.evidence != ''}"
-         th:href="@{'/OnlineFirSystem/view-evidence/' + ${complainResponse.evidence}}"
-         target="_blank">View Evidence</a>
-      <span th:if="${complainResponse.evidence == null or complainResponse.evidence == ''}">
+    <!-- Evidence Link -->
+    <div class="card">
+        <h4>Evidence</h4>
+        <p>
+            <strong>File:</strong>
+            <a th:if="${complainResponse.evidence != null and complainResponse.evidence != ''}"
+               th:href="@{'/OnlineFirSystem/view-evidence/' + ${complainResponse.evidence}}"
+               target="_blank">View Evidence</a>
+            <span th:if="${complainResponse.evidence == null or complainResponse.evidence == ''}">
                     No evidence available
                 </span>
-    </p>
-  </div>
+        </p>
+    </div>
 
-  <!-- Back Button -->
-  <div>
-    <a href="/complaints" class="btn btn-secondary">Back to Complaints</a>
-  </div>
+    <!-- Back Button -->
+    <div>
+        <a href="/complaints" class="btn btn-secondary">Back to Complaints</a>
+    </div>
 </div>
 
 </body>

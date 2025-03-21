@@ -40,7 +40,7 @@
 <!-- Display status if available -->
 <div th:if="${statusMessage}" class="container">
     <h2 th:text="${statusMessage}"></h2>
-    <a class="btn btn-secondary"  sec:authorize="!isAuthenticated()" th:href="@{/login}">Now! You can log in here</a>
+    <a class="btn btn-secondary" sec:authorize="!isAuthenticated()" th:href="@{/login}">Now! You can log in here</a>
     <a class="btn btn-secondary" sec:authorize="hasRole('ROLE_NORMAL')" th:href="@{/}">Go To Home Page</a>
     <a class="btn btn-secondary" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin-home}">Go To Home Page</a>
     <a class="btn btn-secondary" sec:authorize="hasRole('ROLE_OFFICER')" th:href="@{/officer-home}">Go To Home Page</a>

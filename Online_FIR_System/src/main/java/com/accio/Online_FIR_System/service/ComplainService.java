@@ -173,8 +173,6 @@ public class ComplainService {
     }
 
 
-
-
     public ModelAndView getComplainResponse(@PathVariable("uniqueID") String uniqueID) {
         Optional<Complain> optionalComplain = complainRepository.findByUniqueID(uniqueID);
         if (optionalComplain.isPresent()) {
@@ -185,7 +183,7 @@ public class ComplainService {
             return modelAndView;
         } else {
             ModelAndView modelAndView = new ModelAndView("message");
-            modelAndView.addObject("statusMessage","Complain not found with this uniqueID: " + uniqueID);
+            modelAndView.addObject("statusMessage", "Complain not found with this uniqueID: " + uniqueID);
             return modelAndView;
         }
 
@@ -203,7 +201,7 @@ public class ComplainService {
             return modelAndView;
         } else {
             ModelAndView modelAndView = new ModelAndView("message");
-            modelAndView.addObject("statusMessage","Evidence not found");
+            modelAndView.addObject("statusMessage", "Evidence not found");
             return modelAndView;
         }
     }

@@ -1,51 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Update Information Complaint</title>
-  <link rel="stylesheet" th:href="@{/css/signup.css}">
+    <title>Update Information Complaint</title>
+    <link rel="stylesheet" th:href="@{/css/signup.css}">
 </head>
 <body>
 
 <div class="container">
-  <form class="form" th:action="@{/OnlineFirSystem/update-complain}" method="post">
-    <p class="title">Update Complaint Information</p>
-    <input type="hidden" id="uniqueID" name="uniqueID" th:value="${param.uniqueID}" />
-    <input type="hidden" name="_method" value="put">
-    <!-- Complaint Type Dropdown -->
-    <select name="complainType" class="input" required>
-      <option value="" disabled selected>Select Complaint Type</option>
-      <option value="Violence">Violence</option>
-      <option value="Theft">Theft</option>
-      <option value="Harassment">Harassment</option>
-      <option value="Fraud">Fraud</option>
-      <option value="Property Damage">Property Damage</option>
-    </select>
+    <form class="form" th:action="@{/OnlineFirSystem/update-complain}" method="post">
+        <p class="title">Update Complaint Information</p>
+        <input type="hidden" id="uniqueID" name="uniqueID" th:value="${param.uniqueID}"/>
+        <input type="hidden" name="_method" value="put">
+        <!-- Complaint Type Dropdown -->
+        <select name="complainType" class="input" required>
+            <option value="" disabled selected>Select Complaint Type</option>
+            <option value="Violence">Violence</option>
+            <option value="Theft">Theft</option>
+            <option value="Harassment">Harassment</option>
+            <option value="Fraud">Fraud</option>
+            <option value="Property Damage">Property Damage</option>
+        </select>
 
-    <!-- Place of Incident -->
-    <input placeholder="Place of Incident" class="input" type="text" name="placeOfIncident" required/>
+        <!-- Place of Incident -->
+        <input placeholder="Place of Incident" class="input" type="text" name="placeOfIncident" required/>
 
-    <!-- Description -->
-    <textarea placeholder="Description" class="input" name="description" rows="4" required></textarea>
+        <!-- Description -->
+        <textarea placeholder="Description" class="input" name="description" rows="4" required></textarea>
 
-    <!-- Nearest Police Station Dropdown -->
-    <select name="nearestPoliceStationCode" class="input" required>
-      <option value="" disabled selected>Select Nearest Police Station</option>
-      <option value="PS001">PS001 Central Police Station/option>
-      <option value="PS002">PS002 Northside Station</option>
-      <option value="PS003">PS003 Southside Station</option>
-      <option value="PS101">PS101 Kanpur Central Police Station</option>
-      <option value="PS102">PS102 New Delhi Police Station</option>
-      <option value="PS103">PS103 Mumbai Police Headquarters</option>
-      <option value="PS104">PS104 Noida Police Station</option>
-      <option value="PS105">PS105 Bijnor District Police Station</option>
-      <option value="PS106">PS106 Moradabad District Police Station</option>
-      <option value="PS107">PS107 Noida District Police Station</option>
-      <option value="PS108">PS108 Gurgaon Police Station</option>
-    </select>
+        <!-- Nearest Police Station Dropdown -->
+        <select name="nearestPoliceStationCode" class="input" required>
+            <option value="" disabled selected>Select Nearest Police Station</option>
+            <option value="PS001">PS001 Central Police Station/option>
+            <option value="PS002">PS002 Northside Station</option>
+            <option value="PS003">PS003 Southside Station</option>
+            <option value="PS101">PS101 Kanpur Central Police Station</option>
+            <option value="PS102">PS102 New Delhi Police Station</option>
+            <option value="PS103">PS103 Mumbai Police Headquarters</option>
+            <option value="PS104">PS104 Noida Police Station</option>
+            <option value="PS105">PS105 Bijnor District Police Station</option>
+            <option value="PS106">PS106 Moradabad District Police Station</option>
+            <option value="PS107">PS107 Noida District Police Station</option>
+            <option value="PS108">PS108 Gurgaon Police Station</option>
+        </select>
 
-    <button class="btn" type="submit">Update Complaint</button>
-    <div id="message"></div>
-  </form>
+        <button class="btn" type="submit">Update Complaint</button>
+        <div id="message"></div>
+    </form>
 </div>
 <script th:src="@{/js/update.js}"></script>
 </body>

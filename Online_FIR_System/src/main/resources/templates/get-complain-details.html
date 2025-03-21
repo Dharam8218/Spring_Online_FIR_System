@@ -1,51 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Add Officer</title>
-  <!-- Reusing the same CSS file as login for similar styling -->
-  <link rel="stylesheet" th:href="@{/css/signup.css}">
+    <title>Add Officer</title>
+    <!-- Reusing the same CSS file as login for similar styling -->
+    <link rel="stylesheet" th:href="@{/css/signup.css}">
 </head>
 <body>
 <div class="container">
-  <form class="form" th:action="@{/OnlineFirSystem/add-officer}" method="post">
-    <p class="title">Get Complaint Details</p>
+    <form class="form" th:action="@{/OnlineFirSystem/add-officer}" method="post">
+        <p class="title">Get Complaint Details</p>
 
-    <!-- Username Field -->
-    <input type="text" name="userName" placeholder="Username" class="input" required />
+        <!-- Username Field -->
+        <input type="text" name="userName" placeholder="Username" class="input" required/>
 
-    <!-- Email Field -->
-    <input type="email" name="email" placeholder="Email" class="input" required />
+        <!-- Email Field -->
+        <input type="email" name="email" placeholder="Email" class="input" required/>
 
-    <!-- Mobile Number Field -->
-    <input type="number" name="mobileNo" placeholder="Mobile Number" class="input" required />
+        <!-- Mobile Number Field -->
+        <input type="number" name="mobileNo" placeholder="Mobile Number" class="input" required/>
 
-    <!-- Gender Field -->
-    <select name="gender" class="input" required>
-      <option value="" disabled selected>Select Gender</option>
-      <option value="MALE">Male</option>
-      <option value="FEMALE">Female</option>
-      <option value="OTHER">Other</option>
-    </select>
+        <!-- Gender Field -->
+        <select name="gender" class="input" required>
+            <option value="" disabled selected>Select Gender</option>
+            <option value="MALE">Male</option>
+            <option value="FEMALE">Female</option>
+            <option value="OTHER">Other</option>
+        </select>
 
-    <!-- Nearest Police Station Dropdown -->
-    <select name="uniqueStationCode" class="input" required>
-      <option value="" disabled selected>Select Police Station</option>
-      <option value="PS001">PS001 Central Police Station/option>
-      <option value="PS002">PS002 Northside Station</option>
-      <option value="PS003">PS003 Southside Station</option>
-      <option value="PS101">PS101 Kanpur Central Police Station</option>
-      <option value="PS102">PS102 New Delhi Police Station</option>
-      <option value="PS103">PS103 Mumbai Police Headquarters</option>
-      <option value="PS104">PS104 Noida Police Station</option>
-      <option value="PS105">PS105 Bijnor District Police Station</option>
-      <option value="PS106">PS106 Moradabad District Police Station</option>
-      <option value="PS107">PS107 Noida District Police Station</option>
-      <option value="PS108">PS108 Gurgaon Police Station</option>
-    </select>
+        <!-- Nearest Police Station Dropdown -->
+        <select name="uniqueStationCode" class="input" required>
+            <option value="" disabled selected>Select Police Station</option>
+            <option value="PS001">PS001 Central Police Station/option>
+            <option value="PS002">PS002 Northside Station</option>
+            <option value="PS003">PS003 Southside Station</option>
+            <option value="PS101">PS101 Kanpur Central Police Station</option>
+            <option value="PS102">PS102 New Delhi Police Station</option>
+            <option value="PS103">PS103 Mumbai Police Headquarters</option>
+            <option value="PS104">PS104 Noida Police Station</option>
+            <option value="PS105">PS105 Bijnor District Police Station</option>
+            <option value="PS106">PS106 Moradabad District Police Station</option>
+            <option value="PS107">PS107 Noida District Police Station</option>
+            <option value="PS108">PS108 Gurgaon Police Station</option>
+        </select>
 
-    <!-- Submit Button -->
-    <button type="submit" class="btn">Get Complain Details</button>
-  </form>
+        <!-- Submit Button -->
+        <button type="submit" class="btn">Get Complain Details</button>
+    </form>
 </div>
 </body>
 </html>

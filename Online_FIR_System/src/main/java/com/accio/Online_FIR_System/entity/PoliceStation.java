@@ -18,7 +18,7 @@ public class PoliceStation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int policeStationID;
 
-    @Column(unique = true,nullable = false)
+    @Column(unique = true, nullable = false)
     private String uniqueStationCode;
 
     private String stationName;

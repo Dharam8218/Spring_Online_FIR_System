@@ -16,18 +16,19 @@ public class CustomUserDetails implements UserDetails {
     String password;
     List<GrantedAuthority> authorities;
 
-    public CustomUserDetails(User user){
-        this.userName=user.getUserName();
-        this.password=user.getPassword();
-        String[] roles =  user.getRoles().split(",");
+    public CustomUserDetails(User user) {
+        this.userName = user.getUserName();
+        this.password = user.getPassword();
+        String[] roles = user.getRoles().split(",");
         List<GrantedAuthority> authorityList = new ArrayList<>();
-        for(String role : roles){
+        for (String role : roles) {
             SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(role);
             authorityList.add(simpleGrantedAuthority);
         }
 
-        this.authorities=authorityList;
+        this.authorities = authorityList;
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.authorities;

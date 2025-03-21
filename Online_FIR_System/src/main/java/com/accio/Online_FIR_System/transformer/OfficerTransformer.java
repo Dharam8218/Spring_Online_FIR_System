@@ -13,8 +13,7 @@ public class OfficerTransformer {
     @Autowired
     PoliceStationRepository policeStationRepository;
 
-    public Officer officerRequestToOfficer(OfficerRequest officerRequest){
-
+    public Officer officerRequestToOfficer(OfficerRequest officerRequest) {
 
 
         PoliceStation station = policeStationRepository.findByUniqueStationCode(officerRequest.getUniqueStationCode())
