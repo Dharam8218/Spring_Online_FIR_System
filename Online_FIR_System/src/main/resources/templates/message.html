@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>#####</title>
     <style>
@@ -11,6 +12,18 @@
             width: 100vw;
             text-align:center;
         }
+        .btn {
+        text-decoration: none;
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 4px;
+        margin-top: 10px;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+    }
     </style>
 </head>
 <body>
@@ -18,6 +31,9 @@
 <!-- Display status if available -->
 <div th:if="${statusMessage}" class="status-message">
     <p th:text="${statusMessage}"></p>
+    <button class="btn btn-secondary" sec:authorize="hasRole('ROLE_NORMAL')" th:href="@{/}">Go To Home Page</button>
+    <button class="btn btn-secondary" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/officer-home}">Go To Home Page</button>
+    <button class="btn btn-secondary" sec:authorize="hasRole('ROLE_OFFICER')" th:href="@{/admin-home}">Go To Home Page</button>
 </div>
 
 </body>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Error</title>
     <style>
@@ -43,6 +44,9 @@
 <div class="container">
     <h2 th:text="${error}"></h2>
     <p th:text="${message}"></p>
+    <button class="btn btn-secondary" sec:authorize="hasRole('ROLE_NORMAL')" th:href="@{/}">Go To Home Page</button>
+    <button class="btn btn-secondary" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/officer-home}">Go To Home Page</button>
+    <button class="btn btn-secondary" sec:authorize="hasRole('ROLE_OFFICER')" th:href="@{/admin-home}">Go To Home Page</button>
 </div>
 </body>
 </html>
