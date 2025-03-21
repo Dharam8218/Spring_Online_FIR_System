@@ -184,7 +184,9 @@ public class ComplainService {
             modelAndView.addObject("complainResponse", complainResponse);
             return modelAndView;
         } else {
-            return new ModelAndView("error-404");
+            ModelAndView modelAndView = new ModelAndView("message");
+            modelAndView.addObject("statusMessage","Complain not found with this uniqueID: " + uniqueID);
+            return modelAndView;
         }
 
     }
@@ -200,7 +202,9 @@ public class ComplainService {
             modelAndView.addObject("evidenceUrl", evidenceUrl);
             return modelAndView;
         } else {
-            return new ModelAndView("error-404");
+            ModelAndView modelAndView = new ModelAndView("message");
+            modelAndView.addObject("statusMessage","Evidence not found");
+            return modelAndView;
         }
     }
 
