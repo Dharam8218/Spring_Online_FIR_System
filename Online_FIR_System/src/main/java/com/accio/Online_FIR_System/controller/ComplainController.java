@@ -126,14 +126,14 @@ public class ComplainController {
     }
 
     /*
-    @PostMapping("update-Complain-Status/{complainID}/{newStatus}")
+    @PostMapping("/update-Complain-Status/{complainID}/{newStatus}")
     public ResponseEntity<String> updateStatusOfComplain(@PathVariable("complainID") int complainID, @PathVariable("newStatus") String newStatus) {
         String message = complainService.updateStatusOfComplain(complainID, newStatus);
         return new ResponseEntity<>(message, HttpStatus.ACCEPTED);
     }
      */
 
-    @PostMapping("update-Complain-Status/{complainID}/{newStatus}")
+    @PostMapping("/update-Complain-Status/{complainID}/{newStatus}")
     public ModelAndView updateStatusOfComplain(@PathVariable("complainID") int complainID, @PathVariable("newStatus") String newStatus) {
         try {
             String message = complainService.updateStatusOfComplain(complainID, newStatus);
@@ -154,11 +154,11 @@ public class ComplainController {
         return new ResponseEntity<>(allComplains, HttpStatus.FOUND);
     }
      */
-    @GetMapping("complain-summary")
+    @GetMapping("/complain-summary")
     ModelAndView getComplainSummary() {
         List<ComplainSummary> allComplains = complainService.getComplainSummary();
         ModelAndView modelAndView = new ModelAndView("complain-summary");
-        modelAndView.addObject("allComplains",allComplains);
+        modelAndView.addObject("complaintSummary",allComplains);
         return modelAndView;
     }
 

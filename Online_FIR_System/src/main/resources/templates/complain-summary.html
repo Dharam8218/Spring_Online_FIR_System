@@ -33,7 +33,7 @@
 <script th:inline="javascript">
     /* Get complaint summary data passed from the controller */
     var complaintData = /*[[${complaintSummary}]]*/ [];
-
+    console.log(complaintData);
     // Extract labels (status) and data (counts) from the complaint data
     var labels = [];
     var data = [];
