@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Summary</title>
+
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+
+
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Complaint Summary</h3>
+
+    <!-- Canvas for Chart -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <canvas id="complaintSummaryChart" width="400" height="400"></canvas>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- Chart.js Script -->
+<script th:inline="javascript">
+    /* Get complaint summary data passed from the controller */
+    var complaintData = /*[[${complaintSummary}]]*/ [];
+
+    // Extract labels (status) and data (counts) from the complaint data
+    var labels = [];
+    var data = [];
+
+    /* Loop through complaint data */
+    for (var i = 0; i < complaintData.length; i++) {
+        labels.push(complaintData[i].status);
+        data.push(complaintData[i].count);
+    }
+
+    // Get the canvas element
+    var ctx = document.getElementById('complaintSummaryChart').getContext('2d');
+
+    // Create the chart
+    var myChart = new Chart(ctx, {
+        type: 'pie', // Can also use 'bar', 'doughnut', 'line', etc.
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Complaint Summary',
+                data: data,
+                backgroundColor: [
+                    '#FF6384', // Red for Rejected
+                    '#36A2EB', // Blue for In Progress
+                    '#FFCE56', // Yellow for Under Review
+                    '#4CAF50'  // Green for Resolved
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function (tooltipItem) {
+                            var label = tooltipItem.label || '';
+                            var value = tooltipItem.raw || 0;
+                            return label + ': ' + value + ' complaints';
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -147,11 +147,19 @@ public class ComplainController {
         }
     }
 
-
+    /*
     @GetMapping("complain-summary")
     ResponseEntity<List<ComplainSummary>> getComplainSummary() {
         List<ComplainSummary> allComplains = complainService.getComplainSummary();
         return new ResponseEntity<>(allComplains, HttpStatus.FOUND);
+    }
+     */
+    @GetMapping("complain-summary")
+    ModelAndView getComplainSummary() {
+        List<ComplainSummary> allComplains = complainService.getComplainSummary();
+        ModelAndView modelAndView = new ModelAndView("complain-summary");
+        modelAndView.addObject("allComplains",allComplains);
+        return modelAndView;
     }
 
 
