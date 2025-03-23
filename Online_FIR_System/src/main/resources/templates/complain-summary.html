@@ -28,6 +28,19 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .btn {
+        text-decoration: none;
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 4px;
+        margin-top: 10px;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+    }
 
     </style>
 
@@ -43,8 +56,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <canvas id="complaintSummaryChart" width="400" height="400"></canvas>
-            <a class="btn btn-secondary" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin-home}">Go To Home Page</a>
-            <a class="btn btn-secondary" sec:authorize="hasRole('ROLE_OFFICER')" th:href="@{/officer-home}">Go To Home Page</a>
+            <a class="btn btn-secondary" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin-home}">Go To Home
+                Page</a>
+            <a class="btn btn-secondary" sec:authorize="hasRole('ROLE_OFFICER')" th:href="@{/officer-home}">Go To Home
+                Page</a>
         </div>
     </div>
 
