@@ -6,6 +6,8 @@ import com.accio.Online_FIR_System.repository.PoliceStationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PoliceStationService {
 
@@ -14,5 +16,9 @@ public class PoliceStationService {
 
     public void addPoliceStation(PoliceStation policeStation) {
         policeStationRepository.save(policeStation);
+    }
+
+    public List<PoliceStation> getStationsWithMoreThan100Complaints() {
+        return policeStationRepository.findStationsWithMoreThan100Complaints();
     }
 }

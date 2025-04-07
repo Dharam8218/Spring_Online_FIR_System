@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -29,6 +32,9 @@ public class User {
 
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
+
+    @OneToMany(mappedBy = "filedBy", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Complain> complaints = new ArrayList<>();
 
 
 }

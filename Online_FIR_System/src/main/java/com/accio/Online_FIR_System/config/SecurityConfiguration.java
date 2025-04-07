@@ -26,7 +26,7 @@ public class SecurityConfiguration {
         http.csrf().disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/", "/css/**", "/js/**").permitAll()
-                .requestMatchers("/login", "/signup").permitAll()
+                .requestMatchers("/login", "/signup","OnlineFirSystem/highComplaints","OnlineFirSystem/get-all-complaint-filed-by-user").permitAll()
                 .requestMatchers("/register-complaint", "/manage-complaint", "/update-complain", "/complain-response", "/get-complain-response", "/view-evidence").hasRole("NORMAL")
                 .requestMatchers("/OnlineFirSystem/add-user").permitAll()
                 .requestMatchers("/OnlineFirSystem").hasRole("NORMAL")

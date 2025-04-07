@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/OnlineFirSystem")
 public class PoliceStationController {
@@ -31,6 +33,11 @@ public class PoliceStationController {
         ModelAndView modelAndView = new ModelAndView("message");
         modelAndView.addObject("statusMessage", message);
         return modelAndView;
+    }
+
+    @GetMapping("/highComplaints")
+    public List<PoliceStation> getStationsWithMoreThan100Complaints() {
+        return policeStationService.getStationsWithMoreThan100Complaints();
     }
 
 }

@@ -25,6 +25,9 @@ public class PoliceStation {
     private String stationAddress;
 
 
-    @OneToMany(mappedBy = "policeStation", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "policeStation", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Officer> officers;
+
+    @OneToMany(mappedBy = "policeStation", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Complain> complaints;
 }

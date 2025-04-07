@@ -33,6 +33,5 @@ public class OfficerController {
         return modelAndView;
     }
 
-
 }
 
