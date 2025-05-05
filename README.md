@@ -22,4 +22,3 @@ Clone the repository.
 Configure the application.properties file for Oracle DB connection.
 Run the application using your Spring Boot environment (e.g., using your IDE or command line).
 
-🌐 Live Demo: This project is also live — you can check it out here: [{(https://springonlinefirsystem-production-ea4a.up.railway.app/)}]
